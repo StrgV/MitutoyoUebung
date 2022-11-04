@@ -5,6 +5,8 @@ from math import sqrt
 
 
 def find_prime_factor(n: int) -> list:
+    if n <= 1:
+        return []
     primefactors_of_n = []
     n = append_primefactors(n, 2, primefactors_of_n)
     prime_factor = 3
@@ -23,11 +25,10 @@ def append_primefactors(n: int, prime_factor: int, primefactors_of_n: list) -> i
 
 
 def check_num_is_prime(n: int) -> bool:
-    if n > 1:
-        for i in range(2, int(sqrt(n))):
-            if (n % i) == 0:
-                return False
-        return True
+    for i in range(2, int(sqrt(n))):
+        if (n % i) == 0:
+            return False
+    return True
 
 
 print(max(find_prime_factor(600851475143)))
