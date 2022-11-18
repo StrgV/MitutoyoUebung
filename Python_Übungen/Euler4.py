@@ -12,9 +12,7 @@ def calculate_and_check(index1: int, index2: int) -> int:
 def check_palindrome(check_for):
     length = len(str(check_for))
     for i in range(1, round(length / 2) + 1):
-        if int(str(check_for)[i - 1]) == int(str(check_for)[-i]):
-            pass
-        else:
+        if int(str(check_for)[i - 1]) != int(str(check_for)[-i]):
             return False
     return True
 assert check_palindrome(3663)
