@@ -15,12 +15,7 @@ def check_palindrome(check_for):
         if int(str(check_for)[i - 1]) != int(str(check_for)[-i]):
             return False
     return True
-assert check_palindrome(3663)
 
-
-
-assert calculate_and_check(91, 99) == 9009
-assert calculate_and_check(12, 12) == 0
 
 def find_all_palindromes_for_n_digits(digits: int) -> list:
     n1 = 10 ** digits - 1
@@ -32,10 +27,16 @@ def find_all_palindromes_for_n_digits(digits: int) -> list:
             if possible_palindrome != 0:
                 palindromes.append(possible_palindrome)
     return palindromes
-assert find_all_palindromes_for_n_digits(1) == [9, 8, 7, 6, 5, 8, 4, 9, 6, 3, 8, 6, 4, 2, 9, 8, 7, 6, 5, 4, 3, 2, 1]
+
 
 def find_largest_palindrome(digits: int):
     palindromes = find_all_palindromes_for_n_digits(digits)
     return max(palindromes)
+
+
+assert calculate_and_check(91, 99) == 9009
+assert calculate_and_check(12, 12) == 0
+assert check_palindrome(3663)
+assert find_all_palindromes_for_n_digits(1) == [9, 8, 7, 6, 5, 8, 4, 9, 6, 3, 8, 6, 4, 2, 9, 8, 7, 6, 5, 4, 3, 2, 1]
 assert find_largest_palindrome(1) == 9
 print(find_largest_palindrome(3))
