@@ -2,6 +2,17 @@
 # A palindromic number reads the same both ways. The largest palindrome made from the product of two 2-digit numbers is 9009 = 91 × 99.
 # Find the largest palindrome made from the product of two 3-digit numbers.
 
+def calculate_and_check(index1: int, index2: int) -> int:
+    check_for = index1 * index2
+    length = len(str(check_for))
+    for i in range(1, round(length/2) + 1):
+        if int(str(check_for)[i - 1]) == int(str(check_for)[-i]):
+            pass
+        else:
+            return 0
+    return check_for
+assert calculate_and_check(91, 99) == 9009
+assert calculate_and_check(12, 12) == 0
 
 def find_all_palindromes_for_n_digits(digits: int) -> list:
     n1 = 10 ** digits - 1
@@ -13,23 +24,10 @@ def find_all_palindromes_for_n_digits(digits: int) -> list:
             if possible_palindrome != 0:
                 palindromes.append(possible_palindrome)
     return palindromes
-
-def calculate_and_check(index1: int, index2: int) -> int:
-    check_for = index1 * index2
-    length = len(str(check_for))
-    for i in range(1, round(length/2) + 1):
-        if int(str(check_for)[i - 1]) == int(str(check_for)[-i]):
-            pass
-        else:
-            return 0
-    return check_for
+assert find_all_palindromes_for_n_digits(1) == [9, 8, 7, 6, 5, 8, 4, 9, 6, 3, 8, 6, 4, 2, 9, 8, 7, 6, 5, 4, 3, 2, 1]
 
 def find_largest_palindrome(digits: int):
     palindromes = find_all_palindromes_for_n_digits(digits)
-    largest_palindrome = 0
-    for i in range(0, len(palindromes)):
-        if palindromes[i] > largest_palindrome:
-            largest_palindrome = palindromes[i]
-    return largest_palindrome
-
+    return max(palindromes)
+assert find_largest_palindrome(1) == 9
 print(find_largest_palindrome(3))
