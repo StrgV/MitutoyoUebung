@@ -12,12 +12,11 @@ def is_palindrome(check_for):
 
 
 def find_all_palindromes_for_n_digits(digits: int) -> list:
-    n1 = 10 ** digits - 1
-    n2 = n1
+    upper_limit = 10 ** digits - 1
     palindromes = []
-    for i in range(n1, 0, -1):
-        for j in range(n2, 0, -1):
-            possible_palindrome = i * j
+    for factor1 in range(upper_limit, 0, -1):
+        for factor2 in range(upper_limit, 0, -1):
+            possible_palindrome = factor1 * factor2
             if is_palindrome(possible_palindrome):
                 if possible_palindrome not in palindromes:
                     palindromes.append(possible_palindrome)
@@ -25,9 +24,7 @@ def find_all_palindromes_for_n_digits(digits: int) -> list:
 
 
 def find_largest_palindrome(digits: int):
-    palindromes = find_all_palindromes_for_n_digits(digits)
-    return max(palindromes)
-
+    return max(find_all_palindromes_for_n_digits(digits))
 
 
 assert is_palindrome(3663)
