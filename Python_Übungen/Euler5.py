@@ -6,7 +6,8 @@ def find_smallest_evenly_divisible_from_1_to_max(maximum: int) -> int:
     smallest_evenly_divisible = 2
     for i in range(1, maximum):
         if smallest_evenly_divisible % i != 0:
-            smallest_evenly_divisible = smallest_evenly_divisible * find_smallest_multiplier(smallest_evenly_divisible, i)
+            smallest_evenly_divisible = smallest_evenly_divisible * find_smallest_multiplier(smallest_evenly_divisible,
+                                                                                             i)
     return smallest_evenly_divisible
 
 
@@ -16,4 +17,7 @@ def find_smallest_multiplier(factor: int, divisible_by: int) -> int:
             return smallest_multiplier
 
 
-print(find_smallest_evenly_divisible_from_1_to_max(20))
+assert find_smallest_multiplier(840, 9) == 3
+assert find_smallest_evenly_divisible_from_1_to_max(10) == 2520
+
+print(find_smallest_evenly_divisible_from_1_to_max(10))
