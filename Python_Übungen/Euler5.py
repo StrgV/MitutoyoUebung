@@ -2,9 +2,9 @@
 # 2520 is the smallest number that can be divided by each of the numbers from 1 to 10 without any remainder.
 # What is the smallest positive number that is evenly divisible by all of the numbers from 1 to 20?
 
-def find_smallest_evenly_divisible_from_1_to_max(max: int) -> int:
+def find_smallest_evenly_divisible_from_1_to_max(maximum: int) -> int:
     smallest_evenly_divisible = 2
-    for i in range(1, max):
+    for i in range(1, maximum):
         if smallest_evenly_divisible % i != 0:
             smallest_evenly_divisible = smallest_evenly_divisible * find_smallest_multiplier(smallest_evenly_divisible, i)
     return smallest_evenly_divisible
